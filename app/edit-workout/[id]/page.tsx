@@ -19,6 +19,7 @@ export default function EditWorkout({ params }: { params: { id: string } }) {
     })
 
     useEffect(() => {
+        document.title = "Edit Workout - Workout Tracker"
         const fetchWorkout = async () => {
             const res = await fetch(`/api/workouts?id=${params.id}`)
             if (res.ok) {

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import WorkoutChart from './WorkoutChart';
 
 type Workout = {
   id: number;
@@ -65,7 +66,10 @@ export default function Dashboard() {
       <Link href="/add-workout" className="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded mb-4 inline-block">
         Add New Workout
       </Link>
-      <div className="mb-4">
+      
+      <WorkoutChart workouts={workouts} />
+
+      <div className="mb-4 mt-4">
         <select 
           className="mr-2 p-2 border rounded"
           value={sortOrder} 
@@ -85,6 +89,7 @@ export default function Dashboard() {
           <option value="legs">Legs</option>
         </select>
       </div>
+      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
         {sortedAndFilteredWorkouts.map((workout) => (
           <div key={workout.id} className="border rounded p-4 bg-white shadow">
@@ -111,6 +116,7 @@ export default function Dashboard() {
           </div>
         ))}
       </div>
+      
       {workoutToDelete && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
           <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">

@@ -1,12 +1,17 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+
 
 const workoutTypes = ['push', 'pull', 'legs']
 const workoutNames = ['Bench Press', 'Deadlift', 'Squat', 'Overhead Press', 'Rows']
 
 export default function AddWorkout() {
+    useEffect(() => {
+        document.title = 'Add Workout - Workout Tracker'
+      }, [])
+
     const [formData, setFormData] = useState({
         date: '',
         type: '',
